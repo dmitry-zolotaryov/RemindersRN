@@ -21,8 +21,8 @@ async function loadScheduledReminders(): Promise<ScheduledReminder[]> {
 // MARK: Private
 
 const reminders: Reminder[] = [
-  { title: "Kristine", description: "The girl I met a party last friday." },
-  { title: "What is bunkum?", description: "Bunkum is an old-fashioned and informal word that refers to foolish or insincere talk or ideas." }
+  { id: 1, title: "Kristine", description: "The girl I met a party last friday." },
+  { id: 2, title: "What is bunkum?", description: "Bunkum is an old-fashioned and informal word that refers to foolish or insincere talk or ideas." }
 ]
 
 const tomorrow: Date = new Date();
@@ -32,8 +32,8 @@ const nextWeek: Date = new Date();
 nextWeek.setDate(nextWeek.getDate() + 7);
 
 const scheduledReminders: ScheduledReminder[] = [
-  { reminder: reminders[0], on: tomorrow },
-  { reminder: reminders[1], on: tomorrow },
-  { reminder: reminders[0], on: nextWeek },
-  { reminder: reminders[1], on: nextWeek },
+  { id: 1, reminder: reminders[0], on: tomorrow },
+  { id: 2, reminder: reminders[1], on: tomorrow },
+  { id: 3, reminder: reminders[0], on: nextWeek },
+  { id: 4, reminder: reminders[1], on: nextWeek },
 ]
