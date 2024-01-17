@@ -5,6 +5,7 @@ import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import LoadingView from "../views/LoadingView";
 import { Reminder } from "../models/Reminder";
 
+/// A screen displaying a list of all reminders
 export default function RemindersScreen() {
   const reminderContext = useContext(ReminderContext);
 
