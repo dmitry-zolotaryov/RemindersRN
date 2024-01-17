@@ -4,6 +4,7 @@ import { ReminderContext } from "../contexts/ReminderContext";
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import LoadingView from "../views/LoadingView";
 import { Reminder } from "../models/Reminder";
+import { ListItem, Divider } from "@ui-kitten/components";
 
 /// A screen displaying a list of all reminders
 export default function RemindersScreen() {
@@ -29,6 +30,7 @@ export default function RemindersScreen() {
           renderItem={({item}) => <ReminderListItem reminder={item} />}
           keyExtractor={reminder => reminder.id.toString()}
           style={styles.flatList}
+          ItemSeparatorComponent={Divider}
         />
       )}
     </SafeAreaView>
@@ -50,7 +52,5 @@ type ReminderListItemProps = {
 }
 
 const ReminderListItem = ({reminder}: ReminderListItemProps) => (
-  <View>
-    <Text>{reminder.title}</Text>
-  </View>
+  <ListItem title={reminder.title} />
 );

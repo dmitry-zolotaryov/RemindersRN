@@ -2,7 +2,9 @@ import LoadingView from "../views/LoadingView";
 import { ReminderContext } from "../contexts/ReminderContext";
 import { useContext, useEffect, useState } from "react";
 import { ScheduledReminder } from "@/models/ScheduledReminder";
-import { SectionList, Text, View } from "react-native";
+import { SectionList } from "react-native";
+import { ListItem, Divider, Text } from "@ui-kitten/components";
+import SectionHeader from "../views/SectionHeader";
 
 /// Screen showing all scheduled reminders
 export default function ScheduledRemindersScreen() {
@@ -27,14 +29,13 @@ export default function ScheduledRemindersScreen() {
           sections={scheduledRemindersGroupedByDate}
           keyExtractor={(item, index) => item.id.toString()}
           renderItem={({item}) => (
-            <View>
-              <Text>{item.reminder.title}</Text>
-              <Text>{item.on.toString()}</Text>
-            </View>
+            <ListItem title={item.reminder.title} description={item.on.toString()} />
           )}
           renderSectionHeader={({section: {label}}) => (
-            <Text>{label}</Text>
-          )} />
+            <SectionHeader>{label}</SectionHeader>
+          )}
+          ItemSeparatorComponent={Divider}
+          />
       )}
     </>
   )

@@ -9,6 +9,8 @@ import { makeReminderContextProvider } from './src/services/ReminderService';
 
 import RemindersScreen from './src/screens/RemindersScreen';
 import ScheduledRemindersScreen from './src/screens/ScheduledRemindersScreen';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider } from '@ui-kitten/components';
 
 const AppTab = createBottomTabNavigator();
 
@@ -16,14 +18,16 @@ export default function App() {
   const reminderContextProvider = makeReminderContextProvider();
 
   return (
-    <ReminderContext.Provider value={reminderContextProvider}>
-      <NavigationContainer>
-        <AppTab.Navigator>
-          <AppTab.Screen name="Schedule" component={ScheduledRemindersScreen} />
-          <AppTab.Screen name="Reminders" component={RemindersScreen} />
-        </AppTab.Navigator>
-      </NavigationContainer>
-    </ReminderContext.Provider>
+    <ApplicationProvider {...eva} theme={eva.light}>
+      <ReminderContext.Provider value={reminderContextProvider}>
+        <NavigationContainer>
+          <AppTab.Navigator>
+            <AppTab.Screen name="Schedule" component={ScheduledRemindersScreen} />
+            <AppTab.Screen name="Reminders" component={RemindersScreen} />
+          </AppTab.Navigator>
+        </NavigationContainer>
+      </ReminderContext.Provider>
+    </ApplicationProvider>
   );
 }
 
