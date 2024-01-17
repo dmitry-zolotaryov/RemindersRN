@@ -25,7 +25,7 @@ export default function ScheduledRemindersScreen() {
       {isLoading ? <LoadingView /> : (
         <SectionList
           sections={scheduledRemindersGroupedByDate}
-          keyExtractor={(item, index) => item.id}
+          keyExtractor={(item, index) => item.id.toString()}
           renderItem={({item}) => (
             <View>
               <Text>{item.reminder.title}</Text>

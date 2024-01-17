@@ -27,7 +27,7 @@ export default function RemindersScreen() {
         <FlatList
           data={reminders}
           renderItem={({item}) => <ReminderListItem reminder={item} />}
-          keyExtractor={reminder => reminder.id}
+          keyExtractor={reminder => reminder.id.toString()}
           style={styles.flatList}
         />
       )}
