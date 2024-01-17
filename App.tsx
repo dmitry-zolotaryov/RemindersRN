@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { ReminderContext } from './src/contexts/ReminderContext';
+import { makeReminderContextProvider } from './src/services/ReminderService';
 
 import RemindersScreen from './src/screens/RemindersScreen';
 import ScheduledRemindersScreen from './src/screens/ScheduledRemindersScreen';
@@ -12,10 +13,10 @@ import ScheduledRemindersScreen from './src/screens/ScheduledRemindersScreen';
 const AppTab = createBottomTabNavigator();
 
 export default function App() {
-  const reminderContext = useContext(ReminderContext);
+  const reminderContextProvider = makeReminderContextProvider();
 
   return (
-    <ReminderContext.Provider value={ reminderContext }>
+    <ReminderContext.Provider value={reminderContextProvider}>
       <NavigationContainer>
         <AppTab.Navigator>
           <AppTab.Screen name="Schedule" component={ScheduledRemindersScreen} />
