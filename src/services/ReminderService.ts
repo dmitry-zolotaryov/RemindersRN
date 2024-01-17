@@ -31,7 +31,7 @@ const tomorrow: Date = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);
 
 const nextWeek: Date = new Date();
-nextWeek.setDate(nextWeek.getDate() + 7);
+nextWeek.setDate(nextWeek.getDate() + 6);
 
 const scheduledReminders: ScheduledReminder[] = [
   { id: 1, reminder: reminders[0], on: tomorrow },
