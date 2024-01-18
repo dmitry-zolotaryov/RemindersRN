@@ -2,8 +2,8 @@ import LoadingView from "../views/LoadingView";
 import { ReminderContext } from "../contexts/ReminderContext";
 import { useContext, useEffect, useState } from "react";
 import { ScheduledReminder } from "@/models/ScheduledReminder";
-import { SectionList } from "react-native";
-import { ListItem, Divider, Text } from "@ui-kitten/components";
+import { SectionList, StyleSheet, View } from "react-native";
+import { List, Divider } from 'react-native-paper';
 import SectionHeader from "../views/SectionHeader";
 
 /// Screen showing all scheduled reminders
@@ -23,13 +23,13 @@ export default function ScheduledRemindersScreen() {
   const scheduledRemindersGroupedByDate: GroupedScheduleReminders[] = groupByDate(scheduledReminders);
 
   return (
-    <>
+    <View style={styles.container}>
       {isLoading ? <LoadingView /> : (
         <SectionList
           sections={scheduledRemindersGroupedByDate}
           keyExtractor={(item, index) => item.id.toString()}
           renderItem={({item}) => (
-            <ListItem title={item.reminder.title} description={item.on.toString()} />
+            <List.Item title={item.reminder.title} description={item.on.toString()} />
           )}
           renderSectionHeader={({section: {label}}) => (
             <SectionHeader>{label}</SectionHeader>
@@ -37,9 +37,19 @@ export default function ScheduledRemindersScreen() {
           ItemSeparatorComponent={Divider}
           />
       )}
-    </>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'white'
+    },
+    flatList: {
+        backgroundColor: 'white'
+    }
+});
 
 type GroupedScheduleReminders = {
   upTo: Date;

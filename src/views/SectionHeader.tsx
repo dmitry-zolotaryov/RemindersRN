@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 import { JSX } from "react";
-import { Text } from "@ui-kitten/components";
+import { StyleSheet, Text } from "react-native";
+import { Divider, List } from "react-native-paper"; 
 
 type SectionHeaderProps = {
   children: string
@@ -8,6 +9,19 @@ type SectionHeaderProps = {
 
 export default function SectionHeader({children}: SectionHeaderProps) {
   return (
-    <Text category="s1">{children}</Text>
+    <List.Section style={sectionHeaderStyle.container} title={children}>
+      <Divider />
+    </List.Section>
   )
 }
+
+const sectionHeaderStyle = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+    marginVertical: 0,
+    padding: 0,
+  },
+  text: {
+    margin: 0,
+  },
+});

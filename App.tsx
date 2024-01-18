@@ -9,8 +9,7 @@ import { makeReminderContextProvider } from './src/services/ReminderService';
 
 import RemindersScreen from './src/screens/RemindersScreen';
 import ScheduledRemindersScreen from './src/screens/ScheduledRemindersScreen';
-import * as eva from '@eva-design/eva';
-import { ApplicationProvider } from '@ui-kitten/components';
+import { PaperProvider } from 'react-native-paper';
 
 const AppTab = createBottomTabNavigator();
 
@@ -18,7 +17,7 @@ export default function App() {
   const reminderContextProvider = makeReminderContextProvider();
 
   return (
-    <ApplicationProvider {...eva} theme={eva.light}>
+    <PaperProvider>
       <ReminderContext.Provider value={reminderContextProvider}>
         <NavigationContainer>
           <AppTab.Navigator>
@@ -27,7 +26,7 @@ export default function App() {
           </AppTab.Navigator>
         </NavigationContainer>
       </ReminderContext.Provider>
-    </ApplicationProvider>
+    </PaperProvider>
   );
 }
 
